@@ -1,0 +1,12 @@
+.Mount_mount {
+  grid-area: mount;
+  input, span{
+    margin-top: 20px;
+  }
+  input{
+    border-left: transparent;
+  }
+  span{
+    border-right: transparent;
+  }
+}
