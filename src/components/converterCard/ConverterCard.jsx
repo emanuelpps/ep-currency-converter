@@ -27,12 +27,19 @@ export default function ConverterCard() {
       .catch((error) => console.log("error", error));
   };
 
+  const CurrencyCountry = () => {
+    fetch("https://api.apilayer.com/currency_data/list", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
   return (
     <div className="ConverterCard_converter">
       <Mount inputHandler={inputHandler} inputValue={inputValue} />
       <FromCurrency currencyFrom={currencyFrom} />
       <ButtonBox />
-      <ToCurrency currencyTo={currencyTo}/>
+      <ToCurrency currencyTo={currencyTo} />
       <ConverterBox />
     </div>
   );
