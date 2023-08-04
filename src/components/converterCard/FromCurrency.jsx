@@ -1,30 +1,28 @@
 import React from "react";
+import Select from "react-select";
+import { iso31661 } from "iso-3166";
+import Flag from "react-world-flags";
 
 export default function FromCurrency({ currencyFrom }) {
-
-  if (!currencyFrom || !currencyFrom.currencies){
-    return null
+  if (!currencyFrom || !currencyFrom.currencies) {
+    return null;
   }
-  
+
   const currencyArray = Object.keys(currencyFrom.currencies);
 
-  console.log(currencyFrom);
-  console.log("array", currencyArray);
+  const options = currencyArray.map((currency) => ({
+    value: currency,
+    label: (
+      <span>
+        <Flag code={iso31661[currency]?.alpha2} height="16" />
+        {currency}
+      </span>
+    ),
+  }));
+
   return (
     <div className="FromCurrency_from-currency">
-      <select
-        className="form-select bg-transparent text-white"
-        aria-label="Default select example"
-      >
-        {currencyArray?.map((currency, index) => (
-          <option
-            key={index}
-            className="FromCurrency_options"
-          >
-            {currency}
-          </option>
-        ))}
-      </select>
+      <Select options={options} className="bg-transparent"/>
     </div>
   );
 }
