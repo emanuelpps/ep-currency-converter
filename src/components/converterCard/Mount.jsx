@@ -4,7 +4,7 @@ export default function Mount({inputHandler, inputValue}) {
 
   return (
     <div className="Mount_mount">
-      <div class="input-group mb-3">
+      <div class="input-group mb-3 h-100">
         <span class="input-group-text text-white bg-transparent">$</span>
         <input
           type="text"

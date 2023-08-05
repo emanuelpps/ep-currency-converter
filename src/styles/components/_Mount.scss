@@ -1,12 +1,15 @@
 .Mount_mount {
   grid-area: mount;
+  height: 100%;
   input, span{
     margin-top: 20px;
   }
   input{
     border-left: transparent;
+    height: 50px !important;
   }
   span{
     border-right: transparent;
+    height: 50px !important;
   }
 }

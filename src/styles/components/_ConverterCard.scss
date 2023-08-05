@@ -20,6 +20,7 @@
   backdrop-filter: blur(11.6px);
   -webkit-backdrop-filter: blur(11.6px);
   border: 1px solid rgba(19, 0, 90, 1);
+  z-index: 1;
 }
 
 .ConverterCard_converter-result {

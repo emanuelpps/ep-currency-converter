@@ -7,12 +7,12 @@ import ConverterBox from "./ConverterBox";
 import { requestOptions } from "../../api/CurrencyDataApi";
 
 
-export default function ConverterCard() {
+export default function ConverterCard({setCurrencyResult}) {
   
   const [inputValue, setInputValue] = useState();
   const [currencyFrom, setCurrencyFrom] = useState({});
   const [currencyTo, setCurrencyTo] = useState({});
-  const [currencyResult, setCurrencyResult] = useState();
+
 
   useEffect(() => {
     const fetchCountryCurrency = async () => {
@@ -41,11 +41,11 @@ export default function ConverterCard() {
 
   const ConversionCurrency = () => {
     fetch(
-      `https://api.apilayer.com/currency_data/convert?to=[to]&from=[from]&amount=${inputValue}`,
+      `https://api.apilayer.com/currency_data/convert?to=${currencyTo}&from=${currencyFrom}&amount=${inputValue}`,
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((result) => setCurrencyResult(result))
       .catch((error) => console.log("error", error));
   };
 
@@ -55,7 +55,7 @@ export default function ConverterCard() {
       <FromCurrency currencyFrom={currencyFrom} />
       <ButtonBox />
       <ToCurrency currencyTo={currencyTo} />
-      <ConverterBox currencyResult={currencyResult} />
+      <ConverterBox ConversionCurrency={ConversionCurrency}/>
     </div>
   );
 }

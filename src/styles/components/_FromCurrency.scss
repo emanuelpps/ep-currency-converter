@@ -1,6 +1,10 @@
 .FromCurrency_from-currency {
   grid-area: from-currency;
+}
 
+.FromCurrency_Select{
+  width: 100%;
+  background-color: transparent !important;
 }
 
 .FromCurrency_options {
@@ -11,6 +15,7 @@
   width: 6px;
   border-left: 1px solid #13005a;
 }
+
 ::-webkit-scrollbar-thumb {
-  background-color: #0b0032;;
+  background-color: #0b0032;
 }
