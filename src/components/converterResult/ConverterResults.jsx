@@ -5,7 +5,7 @@ export default function ConverterResults({currencyResult}) {
   console.log(currencyResult);
   return (
     <div className="ConverterResults_converter-result">
-      <NumericFormat className="result" value={`$${Math.round(currencyResult)}`}  thousandSeparator="," />;
+      <NumericFormat className="ConverterResults_result text-center" value={`${Math.round(currencyResult)}`} type="$"  thousandSeparator="," decimalScale={2}/>;
       {/*<h2 ></h2>*/}
     </div>
   );

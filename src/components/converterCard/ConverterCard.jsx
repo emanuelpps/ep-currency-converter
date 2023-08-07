@@ -6,14 +6,13 @@ import ToCurrency from "./ToCurrency";
 import ConverterBox from "./ConverterBox";
 import { requestOptions } from "../../api/CurrencyDataApi";
 
-export default function ConverterCard({ setCurrencyResult}) {
+export default function ConverterCard({ setCurrencyResult }) {
   const [inputValue, setInputValue] = useState();
   const [currencyFrom, setCurrencyFrom] = useState({});
   const [currencyTo, setCurrencyTo] = useState({});
   const [currentCurrencyFrom, setCurrentCurrencyFrom] = useState("");
   const [currentCurrencyTo, setCurrentCurrencyTo] = useState("");
-
-  ///armar logica para que el input seleccionado y el valor seleccionado lleguen a la funcion para el resultado
+  const [swapButton, setSwapButton] = useState(false);
 
   useEffect(() => {
     const fetchCountryCurrency = async () => {
@@ -24,41 +23,46 @@ export default function ConverterCard({ setCurrencyResult}) {
         );
         const data = await response.json();
         setCurrencyFrom(data);
-        setCurrencyTo(data); // Guardar los datos en el estado
+        setCurrencyTo(data);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchCountryCurrency(); // Llamar a la función para obtener los datos
+    fetchCountryCurrency();
   }, []);
-
-  console.log(currencyFrom);
 
   const inputHandler = (e) => {
     setInputValue(e.target.value);
-    console.log(inputValue);
+  };
+
+  const swapCurrency = () => {
+    setSwapButton(!swapButton);
+    setCurrentCurrencyFrom(swapButton ? currentCurrencyTo : currentCurrencyFrom);
+    setCurrentCurrencyTo(swapButton ? currentCurrencyFrom : currentCurrencyTo);
   };
 
   const ConversionCurrency = () => {
-    fetch(
-      `https://api.apilayer.com/currency_data/convert?to=${currentCurrencyTo}&from=${currentCurrencyFrom}&amount=${inputValue}`,
-      requestOptions
-    )
-    .then((response) => response.json())
-    .then((data) => {
-      // Verificar si el objeto de respuesta contiene las claves success y error
-      if (data.success === true) {
-        // Si success es true, entonces el resultado se encuentra en data.result
-        setCurrencyResult(data.result);
-      } else {
-        // Si success es false, se produjo un error y puedes manejarlo como desees
-        console.log("Error en la conversión:", data.error);
-      }
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
-};
+    if (inputValue !== undefined) {
+      const NewInput = inputValue.replace(/,/g, "");
+      fetch(
+        `https://api.apilayer.com/currency_data/convert?to=${currentCurrencyTo}&from=${currentCurrencyFrom}&amount=${NewInput}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success === true) {
+            setCurrencyResult(data.result);
+          } else {
+            console.log("Error en la conversión:", data.error);
+          }
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    } else {
+      alert('valor vacio');
+    }
+  };
 
   return (
     <div className="ConverterCard_converter">
@@ -66,11 +70,17 @@ export default function ConverterCard({ setCurrencyResult}) {
       <FromCurrency
         currencyFrom={currencyFrom}
         setCurrentCurrencyFrom={setCurrentCurrencyFrom}
+        currentCurrencyTo={currentCurrencyTo}
+        setSwapButton={setSwapButton}
+        swapButton={swapButton}
       />
-      <ButtonBox />
+      <ButtonBox swapCurrency={swapCurrency} />
       <ToCurrency
         currencyTo={currencyTo}
         setCurrentCurrencyTo={setCurrentCurrencyTo}
+        currentCurrencyFrom={currentCurrencyFrom}
+        setSwapButton={setSwapButton}
+        swapButton={swapButton}
       />
       <ConverterBox ConversionCurrency={ConversionCurrency} />
     </div>

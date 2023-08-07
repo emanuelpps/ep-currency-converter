@@ -1,23 +1,29 @@
 import React from "react";
-import CurrencyFlag from 'react-currency-flags';
+import CurrencyFlag from "react-currency-flags";
 import Select from "react-select";
 
-export default function ToCurrency({ currencyTo, setCurrentCurrencyTo }) {
-  if (! currencyTo || ! currencyTo.currencies) {
+export default function ToCurrency({
+  currencyTo,
+  setCurrentCurrencyTo,
+  currentCurrencyTo,
+  currentCurrencyFrom,
+  setSwapButton,
+  swapButton,
+}) {
+  if (!currencyTo || !currencyTo.currencies) {
     return null;
   }
 
-  const currencyArray = Object.keys( currencyTo.currencies);
+  const currencyArray = Object.keys(currencyTo.currencies);
 
   const options = currencyArray.map((currency) => {
-
-
     return {
       value: currency,
       label: (
         <span className="FromCurrency_SpanSelect">
-          {<CurrencyFlag currency={currency} size="sm" className="mx-3" />}{currency}
-          </span>
+          {<CurrencyFlag currency={currency} size="sm" className="mx-3" />}
+          {currency}
+        </span>
       ),
     };
   });
@@ -40,11 +46,20 @@ export default function ToCurrency({ currencyTo, setCurrentCurrencyTo }) {
   const OnChangeHandler = (e) => {
     setCurrentCurrencyTo(e.value);
     console.log(e.value);
-  }
+  };
+
+  const selectedValue = swapButton ? currentCurrencyFrom : currentCurrencyTo;
+
 
   return (
     <div className="ToCurrency_to-currency">
-      <Select options={options} className="text-white ToCurrency_Select" styles={customStyles} onChange={(e) => OnChangeHandler(e)}/>
+      <Select
+        options={options}
+        className="text-white ToCurrency_Select"
+        styles={customStyles}
+        onChange={OnChangeHandler}
+        value={options.find((option) => option.value === selectedValue)}
+      />
     </div>
   );
 }

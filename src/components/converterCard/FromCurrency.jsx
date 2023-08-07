@@ -1,8 +1,15 @@
 import React from "react";
 import Select from "react-select";
-import CurrencyFlag from 'react-currency-flags';
+import CurrencyFlag from "react-currency-flags";
 
-export default function FromCurrency({ currencyFrom, setCurrentCurrencyFrom }) {
+export default function FromCurrency({
+  currencyFrom,
+  setCurrentCurrencyFrom,
+  currentCurrencyTo,
+  currentCurrencyFrom,
+  setSwapButton,
+  swapButton,
+}) {
   if (!currencyFrom || !currencyFrom.currencies) {
     return null;
   }
@@ -13,8 +20,9 @@ export default function FromCurrency({ currencyFrom, setCurrentCurrencyFrom }) {
     return {
       value: currency,
       label: (
-        <span  className="FromCurrency_SpanSelect">
-          {<CurrencyFlag currency={currency} size="sm" className="mx-3" />}{currency}
+        <span className="FromCurrency_SpanSelect">
+          {<CurrencyFlag currency={currency} size="sm" className="mx-3" />}
+          {currency}
         </span>
       ),
     };
@@ -35,14 +43,22 @@ export default function FromCurrency({ currencyFrom, setCurrentCurrencyFrom }) {
     singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#fff" }),
   };
 
-  const OnChangeleHadler = (e) => {
-    setCurrentCurrencyFrom(e.value); // Access the selected currency value correctly
+  const OnChangeHadler = (e) => {
+    setCurrentCurrencyFrom(e.value);
     console.log(e.value);
-  }
+  };
+
+  const selectedValue = swapButton ? currentCurrencyTo : currentCurrencyFrom;
 
   return (
     <div className="FromCurrency_from-currency">
-      <Select options={options} className="text-white FromCurrency_Select" styles={customStyles} onChange={(e) => OnChangeleHadler(e)} />
-    </div>
+    <Select
+      options={options}
+      className="text-white FromCurrency_Select"
+      styles={customStyles}
+      onChange={OnChangeHadler}
+      value={options.find((option) => option.value === selectedValue)}
+    />
+  </div>
   );
 }

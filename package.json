@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-number-format": "^5.2.2",
+    "react-number-format-datagrid-stable-version": "^4.9.4",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.4",
     "react-world-flags": "^1.5.1",
