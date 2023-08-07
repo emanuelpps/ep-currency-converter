@@ -2,7 +2,7 @@ import React from "react";
 import CurrencyFlag from 'react-currency-flags';
 import Select from "react-select";
 
-export default function ToCurrency({ currencyTo }) {
+export default function ToCurrency({ currencyTo, setCurrentCurrencyTo }) {
   if (! currencyTo || ! currencyTo.currencies) {
     return null;
   }
@@ -37,9 +37,14 @@ export default function ToCurrency({ currencyTo }) {
     singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#fff" }),
   };
 
+  const OnChangeHandler = (e) => {
+    setCurrentCurrencyTo(e.value);
+    console.log(e.value);
+  }
+
   return (
     <div className="ToCurrency_to-currency">
-      <Select options={options} className="text-white ToCurrency_Select" styles={customStyles} />
+      <Select options={options} className="text-white ToCurrency_Select" styles={customStyles} onChange={(e) => OnChangeHandler(e)}/>
     </div>
   );
 }
