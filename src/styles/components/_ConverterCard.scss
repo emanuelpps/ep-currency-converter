@@ -27,3 +27,10 @@
   background-color: darkgreen;
   grid-area: converter-result;
 }
+
+@media screen and (max-width: 760px) {
+  .ConverterCard_converter {
+    width: 368px;
+    max-width: 100%;
+  }
+}

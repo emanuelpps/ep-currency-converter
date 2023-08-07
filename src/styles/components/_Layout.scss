@@ -31,3 +31,43 @@
 }
 
 
+@media screen and (max-width: 760px) {
+  .Layout_layout {
+    grid-template-columns: 0.5fr 1fr 0.1fr;
+    grid-template-rows: 0.2fr 1.5fr 0.2fr 1fr 0.5fr;
+    gap: 0px;
+    grid-template-areas:
+      ". . ."
+      ". converter ."
+      ". . ."
+      ". converter-result ."
+      ". . .";
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Layout_layout {
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 0.2fr 1.5fr 0.2fr 1fr 0.5fr;
+    gap: 10px;
+    grid-template-areas:
+      ". . ."
+      ". converter ."
+      ". . ."
+      ". converter-result ."
+      ". . .";
+      justify-self: center;
+      justify-content: center;
+  }
+}
+
+/* Estilos para tamaños de pantalla mayores a 1024px */
+@media screen and (min-width: 1024px) {
+  .Layout_layout {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+
+
