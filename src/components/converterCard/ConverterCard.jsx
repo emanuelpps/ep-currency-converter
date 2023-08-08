@@ -6,7 +6,7 @@ import ToCurrency from "./ToCurrency";
 import ConverterBox from "./ConverterBox";
 import { requestOptions } from "../../api/CurrencyDataApi";
 
-export default function ConverterCard({ setCurrencyResult }) {
+export default function ConverterCard({ setCurrencyResult,setLoadingResults, loadingResults }) {
   const [inputValue, setInputValue] = useState();
   const [currencyFrom, setCurrencyFrom] = useState({});
   const [currencyTo, setCurrencyTo] = useState({});
@@ -86,7 +86,7 @@ export default function ConverterCard({ setCurrencyResult }) {
             setSwapButton={setSwapButton}
             swapButton={swapButton}
           />
-          <ConverterBox ConversionCurrency={ConversionCurrency} />
+          <ConverterBox ConversionCurrency={ConversionCurrency}  setLoadingResults={setLoadingResults} loadingResults={loadingResults}/>
         </>
       ) : (
         <div className="spinner-border text-info" role="status">
