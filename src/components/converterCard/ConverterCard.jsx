@@ -37,7 +37,9 @@ export default function ConverterCard({ setCurrencyResult }) {
 
   const swapCurrency = () => {
     setSwapButton(!swapButton);
-    setCurrentCurrencyFrom(swapButton ? currentCurrencyTo : currentCurrencyFrom);
+    setCurrentCurrencyFrom(
+      swapButton ? currentCurrencyTo : currentCurrencyFrom
+    );
     setCurrentCurrencyTo(swapButton ? currentCurrencyFrom : currentCurrencyTo);
   };
 
@@ -60,29 +62,37 @@ export default function ConverterCard({ setCurrencyResult }) {
           console.log("error", error);
         });
     } else {
-      alert('valor vacio');
+      alert("valor vacio");
     }
   };
 
   return (
     <div className="ConverterCard_converter">
-      <Mount inputHandler={inputHandler} inputValue={inputValue} />
-      <FromCurrency
-        currencyFrom={currencyFrom}
-        setCurrentCurrencyFrom={setCurrentCurrencyFrom}
-        currentCurrencyTo={currentCurrencyTo}
-        setSwapButton={setSwapButton}
-        swapButton={swapButton}
-      />
-      <ButtonBox swapCurrency={swapCurrency} />
-      <ToCurrency
-        currencyTo={currencyTo}
-        setCurrentCurrencyTo={setCurrentCurrencyTo}
-        currentCurrencyFrom={currentCurrencyFrom}
-        setSwapButton={setSwapButton}
-        swapButton={swapButton}
-      />
-      <ConverterBox ConversionCurrency={ConversionCurrency} />
+      {currencyFrom && currencyTo ? (
+        <>
+          <Mount inputHandler={inputHandler} inputValue={inputValue} />
+          <FromCurrency
+            currencyFrom={currencyFrom}
+            setCurrentCurrencyFrom={setCurrentCurrencyFrom}
+            currentCurrencyTo={currentCurrencyTo}
+            setSwapButton={setSwapButton}
+            swapButton={swapButton}
+          />
+          <ButtonBox swapCurrency={swapCurrency} />
+          <ToCurrency
+            currencyTo={currencyTo}
+            setCurrentCurrencyTo={setCurrentCurrencyTo}
+            currentCurrencyFrom={currentCurrencyFrom}
+            setSwapButton={setSwapButton}
+            swapButton={swapButton}
+          />
+          <ConverterBox ConversionCurrency={ConversionCurrency} />
+        </>
+      ) : (
+        <div className="spinner-border text-info" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      )}
     </div>
   );
 }
