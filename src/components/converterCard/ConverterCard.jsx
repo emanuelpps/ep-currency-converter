@@ -6,13 +6,19 @@ import ToCurrency from "./ToCurrency";
 import ConverterBox from "./ConverterBox";
 import { requestOptions } from "../../api/CurrencyDataApi";
 
-export default function ConverterCard({ setCurrencyResult,setLoadingResults, loadingResults }) {
+export default function ConverterCard({
+  setCurrencyResult,
+  setLoadingResults,
+  loadingResults,
+  setCurrencyState
+}) {
   const [inputValue, setInputValue] = useState();
   const [currencyFrom, setCurrencyFrom] = useState({});
   const [currencyTo, setCurrencyTo] = useState({});
   const [currentCurrencyFrom, setCurrentCurrencyFrom] = useState("");
   const [currentCurrencyTo, setCurrentCurrencyTo] = useState("");
   const [swapButton, setSwapButton] = useState(false);
+  const [whileLoading, setWhileLoading] = useState(true);
 
   useEffect(() => {
     const fetchCountryCurrency = async () => {
@@ -27,6 +33,7 @@ export default function ConverterCard({ setCurrencyResult,setLoadingResults, loa
       } catch (error) {
         console.log(error);
       }
+      setWhileLoading(false);
     };
     fetchCountryCurrency();
   }, []);
@@ -41,6 +48,7 @@ export default function ConverterCard({ setCurrencyResult,setLoadingResults, loa
       swapButton ? currentCurrencyTo : currentCurrencyFrom
     );
     setCurrentCurrencyTo(swapButton ? currentCurrencyFrom : currentCurrencyTo);
+    console.log(swapButton);
   };
 
   const ConversionCurrency = () => {
@@ -53,6 +61,8 @@ export default function ConverterCard({ setCurrencyResult,setLoadingResults, loa
         .then((response) => response.json())
         .then((data) => {
           if (data.success === true) {
+            console.log(data.query.to);
+            setCurrencyState(data.query.to)
             setCurrencyResult(data.result);
           } else {
             console.log("Error en la conversión:", data.error);
@@ -77,6 +87,7 @@ export default function ConverterCard({ setCurrencyResult,setLoadingResults, loa
             currentCurrencyTo={currentCurrencyTo}
             setSwapButton={setSwapButton}
             swapButton={swapButton}
+            whileLoading={whileLoading}
           />
           <ButtonBox swapCurrency={swapCurrency} />
           <ToCurrency
@@ -85,8 +96,13 @@ export default function ConverterCard({ setCurrencyResult,setLoadingResults, loa
             currentCurrencyFrom={currentCurrencyFrom}
             setSwapButton={setSwapButton}
             swapButton={swapButton}
+            whileLoading={whileLoading}
           />
-          <ConverterBox ConversionCurrency={ConversionCurrency}  setLoadingResults={setLoadingResults} loadingResults={loadingResults}/>
+          <ConverterBox
+            ConversionCurrency={ConversionCurrency}
+            setLoadingResults={setLoadingResults}
+            loadingResults={loadingResults}
+          />
         </>
       ) : (
         <div className="spinner-border text-info" role="status">

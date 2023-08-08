@@ -7,7 +7,7 @@ export default function FromCurrency({
   setCurrentCurrencyFrom,
   currentCurrencyTo,
   currentCurrencyFrom,
-  setSwapButton,
+  whileLoading,
   swapButton,
 }) {
   if (!currencyFrom || !currencyFrom.currencies) {
@@ -49,16 +49,23 @@ export default function FromCurrency({
   };
 
   const selectedValue = swapButton ? currentCurrencyTo : currentCurrencyFrom;
+  console.log("while loading", whileLoading);
 
   return (
     <div className="FromCurrency_from-currency">
-    <Select
-      options={options}
-      className="text-white FromCurrency_Select"
-      styles={customStyles}
-      onChange={OnChangeHadler}
-      value={options.find((option) => option.value === selectedValue)}
-    />
-  </div>
+      {whileLoading ? (
+        <div className="spinner-border text-info text-center justify-content-center" role="status">
+          <span className="visually-hidden text-center justify-content-center">Loading...</span>
+        </div>
+      ) : (
+        <Select
+          options={options}
+          className="text-white FromCurrency_Select"
+          styles={customStyles}
+          onChange={OnChangeHadler}
+          value={options.find((option) => option.value === selectedValue)}
+        />
+      )}
+    </div>
   );
 }
