@@ -15,12 +15,10 @@ Este proyecto es una aplicación que te permite ingresar cualquier monto y conve
 
 ## Demo
 
-Puedes ver la aplicación en acción a través de la siguiente [demo en línea](https://emanuelpps.github.io/ep-currency-converter/).
+(https://emanuelpps.github.io/ep-currency-converter/).
 
 ## Capturas de Pantalla
 
-Aquí hay algunas capturas de pantalla que muestran cómo se ve la aplicación:
-
-_[https://media.licdn.com/dms/image/D4D22AQG30Yi2jLquIw/feedshare-shrink_800/0/1691505686440?e=1695254400&v=beta&t=fQ_DUP-mnmvq-YcFPCU69FroxC8Pz4keFzH4iAyvYj0]_
+<img src="https://media.licdn.com/dms/image/D4D22AQG30Yi2jLquIw/feedshare-shrink_800/0/1691505686440?e=1695254400&v=beta&t=fQ_DUP-mnmvq-YcFPCU69FroxC8Pz4keFzH4iAyvYj0"/>
 
 
