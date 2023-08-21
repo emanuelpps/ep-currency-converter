@@ -5,7 +5,7 @@
 
 # Conversor de Monedas - Aplicación de Conversión de Monedas
 
-Este proyecto es una aplicación aplicación que te permite ingresar cualquier monto y convertirlo a diferentes monedas disponibles en tiempo real.
+Este proyecto es una aplicación que te permite ingresar cualquier monto y convertirlo a diferentes monedas disponibles en tiempo real.
 
 ## Características
 
