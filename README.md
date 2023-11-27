@@ -2,7 +2,7 @@
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-![EP Curryency Converter](https://media.licdn.com/dms/image/D4D22AQG30Yi2jLquIw/feedshare-shrink_800/0/1691505686440?e=1695254400&v=beta&t=fQ_DUP-mnmvq-YcFPCU69FroxC8Pz4keFzH4iAyvYj0)
+![Currency Converter](https://media.licdn.com/dms/image/D4D22AQG30Yi2jLquIw/feedshare-shrink_800/0/1691505686440?e=1695254400&v=beta&t=fQ_DUP-mnmvq-YcFPCU69FroxC8Pz4keFzH4iAyvYj0)
 
 # Currency Converter - Currency Conversion Application
 
@@ -17,9 +17,3 @@ This project is an application that allows you to enter any amount and convert i
 ## Demo
 
 (https://emanuelpps.github.io/ep-currency-converter/).
-
-## Capturas de Pantalla
-
-<img src="https://media.licdn.com/dms/image/D4D22AQG30Yi2jLquIw/feedshare-shrink_800/0/1691505686440?e=1695254400&v=beta&t=fQ_DUP-mnmvq-YcFPCU69FroxC8Pz4keFzH4iAyvYj0"/>
-
-
