@@ -2,15 +2,17 @@
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-# Conversor de Monedas - Aplicación de Conversión de Monedas
+![EP Curryency Converter](https://media.licdn.com/dms/image/D4D22AQG30Yi2jLquIw/feedshare-shrink_800/0/1691505686440?e=1695254400&v=beta&t=fQ_DUP-mnmvq-YcFPCU69FroxC8Pz4keFzH4iAyvYj0)
 
-Este proyecto es una aplicación que te permite ingresar cualquier monto y convertirlo a diferentes monedas disponibles en tiempo real.
+# Currency Converter - Currency Conversion Application
 
-## Características
+This project is an application that allows you to enter any amount and convert it into different currencies in real-time.
 
-- Conversión rápida y sencilla de monedas.
-- Interfaz de usuario intuitiva y atractiva desarrollada con HTML5,React js, Bootstrap y SASS.
-- Integración con la API Currency Data API para obtener información actualizada de las tasas de cambio.
+## Features
+
+- Quick and easy currency conversion.
+- Intuitive and attractive user interface developed with HTML5, ReactJS, Bootstrap, and SASS.
+- Integration with the Currency Data API to obtain up-to-date information on exchange rates.
 
 ## Demo
 
